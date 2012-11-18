@@ -1,0 +1,42 @@
+The Plugin integrates www.ogone.com payment provider
+
+Easy Steps:
+
+In case you render selection page yourself, now the following can happen.
+
+1. Install the Ogone plugin
+
+2. Add the following to your projects config
+grails.plugin.megusta.ogone.pspid = ""
+grails.plugin.megusta.ogone.submitUrl =  "https://secure.ogone.com/ncol/test/orderstandard.asp"//test or prod
+grails.plugin.megusta.ogone.signIn = ""
+grails.plugin.megusta.ogone.signOut = ""
+grails.plugin.megusta.ogone.uiResponse = "http://localhost:8080/ogone-use/use/uiResponse"
+grails.plugin.megusta.ogone.backurl = "http://localhost:8080/ogone-use/use/selectPayment"
+grails.plugin.megusta.ogone.homeurl = "http://localhost:8080/ogone-use/use/home"
+grails.plugin.megusta.ogone.default.currency = "EUR"
+grails.plugin.megusta.ogone.direct.link = "https://secure.ogone.com/ncol/test/orderdirect.asp"
+grails.plugin.megusta.ogone.direct.sha= ""
+grails.plugin.megusta.ogone.direct.password = ""
+grails.plugin.megusta.ogone.direct.userId = ""
+
+3. Log into your ogone account an make correct configurations
+ogoneConfiguration contains Screenshots
+
+4. The ogone-use app controller use implements demo usage, feel free to copy or modify
+4a. action home, user clicks "back to merchand during payment process"
+4b. action selectPayment, ogone renders all available payment methods
+4c. action makePayment, directly sends to visa and also creates alias 
+4d. action makeDirectLink, directly submits payments
+5e. action useAlias directly uses an existing alias
+5f. action uiResponse processes incoming ui redirect data
+5g. action serverCall processes incoming server2server call data
+
+Now you only have to implement what happens on uiResponse / serverCall , in the database the status tells you if payment was a success or not
+
+
+
+
+ 
+
+  

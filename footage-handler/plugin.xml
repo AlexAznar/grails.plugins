@@ -1,0 +1,39 @@
+<plugin name='footage-handler' version='0.2.6' grailsVersion='1.3.7 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/footage-handler</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>megusta.ImageFileController</resource>
+    <resource>megusta.UploadController</resource>
+    <resource>com.megusta.footagehandler.Asset</resource>
+    <resource>com.megusta.footagehandler.Image</resource>
+    <resource>com.megusta.footagehandler.ImageFileProfile</resource>
+    <resource>com.megusta.footagehandler.ImageSettings</resource>
+    <resource>com.megusta.footagehandler.S3Asset</resource>
+    <resource>com.megusta.footagehandler.S3AssetOption</resource>
+    <resource>com.megusta.footagehandler.TempAsset</resource>
+    <resource>com.megusta.footagehandler.FileUploadService</resource>
+    <resource>com.megusta.footagehandler.ImageService</resource>
+    <resource>com.megusta.footagehandler.StorageService</resource>
+    <resource>footage.handler.AjaxUploaderTagLib</resource>
+    <resource>footage.handler.ImageHandlerTagLib</resource>
+    <resource>footage.handler.exception.FileUploadException</resource>
+    <resource>footage.handler.exception.InvalidAttributeValueException</resource>
+    <resource>footage.handler.exception.MissingRequiredAttributeException</resource>
+    <resource>footage.handler.exception.UnknownAttributeException</resource>
+    <resource>com.megusta.footagehandler.FileUtils</resource>
+    <resource>com.megusta.footagehandler.ImageFileUtils</resource>
+    <resource>com.megusta.footagehandler.MathUtils</resource>
+  </resources>
+  <dependencies>
+    <plugin name='aws' version='1.1.9.2' />
+  </dependencies>
+  <behavior />
+</plugin>

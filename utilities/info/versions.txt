@@ -1,0 +1,26 @@
+- Version 0.1 fertig
+    - enth�lt das _Utilities script, l�sst sich jedoch nur kopieren und nicht einbauen. 
+    
+- Version 0.2
+    - password Validator
+    - genHelper tag lib
+
+- Version 0.3
+    - jeder einzelne Validators getrennt, damit sofort alle Fehler angezeigt werden
+    - mit einem Aufruf an Validators.passwords werden alle pw validators aufgerufen
+    - default messages sind hinzugefügt
+    - useValidators script für nicht nur config, sondern auch messages.properties Einträge ein
+    - Umlaute liegt nicht am Script, Fehler sonstwo
+    - Username unique Constraint
+    - Email unique Constraint
+    - printlns sollten gelöscht sein
+
+- Version 0.4
+    - script useSelects erstellt für bearbeiten von message.properties
+    - authentication Service
+    - selectService
+    - simpleSelectBox
+
+- Version 0.5
+    - Filter fuer Email einrichten, SPAML etc.
+    - checken, dass weitere Attribute weitergegeben werden

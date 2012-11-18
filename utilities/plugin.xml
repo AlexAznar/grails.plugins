@@ -1,0 +1,23 @@
+<plugin name='utilities' version='0.4.2' grailsVersion='1.3.7 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/utilities</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>com.UseController</resource>
+    <resource>com.usageTbl</resource>
+    <resource>grails.plugins.megusta.utilities.AuthenticationService</resource>
+    <resource>grails.plugins.megusta.utilities.CheckBoxService</resource>
+    <resource>grails.plugins.megusta.utilities.JqueryDatepickerService</resource>
+    <resource>grails.plugins.megusta.utilities.SelectService</resource>
+    <resource>grails.plugins.megusta.utilities.GenHelperTagLib</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

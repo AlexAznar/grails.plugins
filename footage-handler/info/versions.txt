@@ -1,0 +1,25 @@
+- Version 0.1
+
+- Version 0.2
+    - aws jar sind in einer installierenden Anwendung nicht vorhanden
+    - sample files sind dauerhaft im Plugin source, aber werde nicht mitgepackt.
+    - utilities in _Install kopiert 
+    - support für directories geht nicht
+    - validate + save werden zusammen ausgeführt / imageInstace oder false zurückgeben
+    - unterstützung für s3, nur für simple image
+
+- Version 0.2.1
+    - Verwendet jetzt aws 0.1.1
+    
+- Version 0.2.2
+    - Korrektur
+        
+- Version 0.3
+    - path.to.main.dir.default wird grundlos gebraucht, selbst nur für aws     
+    - einrückungen in config bei install anpassen
+    - s3 auch für approveImage
+    - Code säubern + evtl. auch API ändern
+    - support für required or not required image
+    - Löschen des von *.validate() für das field generiertem Errors
+    - streamen von lokalen pictures
+    
