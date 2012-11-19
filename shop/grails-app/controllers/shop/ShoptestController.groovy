@@ -3,6 +3,6 @@ package shop
 class ShoptestController {
 
     def index() {
-        render "hello shop"
+        [catalog: Catalog.list()[0] ]
     }
 }
