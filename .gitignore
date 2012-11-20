@@ -15,3 +15,5 @@ stacktrace.log
 /web-app/WEB-INF/classes
 
 /shop/target/
+.classpath
+.project
