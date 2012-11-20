@@ -5,6 +5,7 @@ import com.github.jknack.handlebars.*
 
 class ShoptestController {
     def shopService
+	def tenantService
     def groovyPagesTemplateEngine
 
     def index() {
@@ -14,6 +15,7 @@ class ShoptestController {
 
     def testdata() {
         shopService.createTestdata()
+	 	tenantService.createTestdata()
         render 'created'
     }
     
@@ -38,7 +40,7 @@ class ShoptestController {
         def tpl = '''
             <html>
             <body>
-            <h1>Handlebars Template Engine</h1>
+            <h1>Handlebars2 Template Engine</h1>
             <p>This is just a sample with template text.</p>
 			<h2>{{kuck}}</h2>
             <ul>
@@ -51,6 +53,14 @@ class ShoptestController {
 			{{#link}}go to start{{/link}}
 			{{/if}}
 
+			<h3>Tenant</h3>
+			{{tenant.name}}
+			- {{tenant.config.mobile}}
+            - {{tenant.config.address}}
+			{{#each tenant.domains}}
+			    <p>{{.}}</p>
+			{{/each}}
+			<hr/>
             </body>
             </html>
         '''
@@ -64,7 +74,6 @@ class ShoptestController {
         Template template = handlebars.compile(tpl);
 
 		def gg = g
-
 		def clj = new Lambda<String,Object>() {
 		    public String apply(def scope, Template templatex) {
 			println scope
@@ -72,6 +81,6 @@ class ShoptestController {
 		    }
 		}
 
-        render template.apply([link:clj,kuck:'servus',items:[[kuck:'bienvenido',name:'chris',age:25],[kuck:'hola',name:'isa',age:20]]]);
+        render template.apply([tenant:request.tenant,link:clj,kuck:'servus',items:[[kuck:'bienvenido',name:'chris',age:25],[kuck:'hola',name:'isa',age:20]]]);
     }
 }

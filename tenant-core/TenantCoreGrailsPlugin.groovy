@@ -1,6 +1,6 @@
 class TenantCoreGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "0.2"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.1 > *"
     // the other plugins this plugin depends on
@@ -12,10 +12,20 @@ class TenantCoreGrailsPlugin {
 
     // TODO Fill in these fields
     def title = "Tenant Core Plugin" // Headline display name of the plugin
-    def author = "Your name"
-    def authorEmail = ""
+    def author = "Christoph Scharf"
+    def authorEmail = "christoph.scharf@scharfmedia.de"
     def description = '''\
-Brief summary/description of the plugin.
+Enables simple multi tenancy by filtering web requests and setting the request.tenant property.
+You can put attributes to Tenants and also address multiple subdomains and domains.
+
+Example Configuration Entry:
+// tenantcore plugin
+grails.plugins.tenantcore.tenants = [
+    'alpha':   [config:[mobile:'123',address:'Greylsstreet 17'],    domains:['www.alpha-grails.com','my-grails.net']],
+    'charlie': [config:[mobile:'456',address:'LeGrey LS Square 1'], domains:['www.grails.com','charlie.grails.com']]
+]
+
+You can provide your own TenantResolverService as SpringBean 'tenantResolverService' with custom logic how to extract the Tenant from the request.
 '''
 
     // URL to the plugin's documentation
@@ -52,6 +62,8 @@ Brief summary/description of the plugin.
 
     def doWithApplicationContext = { applicationContext ->
         // TODO Implement post initialization spring config (optional)
+        def tenantService = applicationContext.getBean('tenantService')
+        tenantService.initializeWithConfig()
     }
 
     def onChange = { event ->
@@ -63,6 +75,8 @@ Brief summary/description of the plugin.
     def onConfigChange = { event ->
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
+        def tenantService = applicationContext.getBean('tenantService')
+        tenantService.initializeWithConfig()
     }
 
     def onShutdown = { event ->
