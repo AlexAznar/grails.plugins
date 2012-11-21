@@ -18,13 +18,13 @@ class TenantService {
 	public Tenant resolveTenantByDefaultImplementation( def request ) {
 
         def tenant = null
-
         // find by subdomain
         if( request.subdomain )
             tenant = Tenant.findByName( request.subdomain )
 
         // find by serverName
-        tenant = Tenant.findByName( request.serverName )
+		if( !tenant )
+        	tenant = Tenant.findByName( request.serverName )
 
         if( !tenant ) {
 			// find by domain a.k.a hostname

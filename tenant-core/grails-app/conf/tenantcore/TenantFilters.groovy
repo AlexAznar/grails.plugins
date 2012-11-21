@@ -23,6 +23,8 @@ class TenantFilters {
 				// and set in request
 				def t = tenantResolverService.resolveTenant( request )
                 request.tenant = t ?: tenantResolverService.resolveDefaultTenant( request )
+
+				println "tenant ${request.tenant.name}"
             }
             after = { Map model ->
             }

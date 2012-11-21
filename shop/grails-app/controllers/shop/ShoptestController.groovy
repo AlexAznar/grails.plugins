@@ -1,11 +1,12 @@
 package shop
 
 import com.github.jknack.handlebars.*
-
+import tenanttheme.*
 
 class ShoptestController {
     def shopService
 	def tenantService
+	def themeService
     def groovyPagesTemplateEngine
 
     def index() {
@@ -18,6 +19,22 @@ class ShoptestController {
 	 	tenantService.createTestdata()
         render 'created'
     }
+
+	def tpllist() {
+		def ps = Product.list()
+
+		def li = []
+		ps.each { p ->
+			li << [link:g.createLink(controller:'shoptest',action:'tpldetail',id:p.id),product:p]
+		}
+		
+		render themeService.render( tenant: request.tenant, theme: new Theme(name:'coco'), template: 'product/list', model: [products:li] )
+	}
+	def tpldetail() {
+		def ps = Product.findById( params.id ?: 1)
+		
+		render themeService.render( tenant: request.tenant, theme: new Theme(name:'coco'), template: 'product/detail', model: [product:ps,backlink:g.createLink(controller:'shoptest',action:'tpllist')] )
+	}
     
     def tpl() {
         def tpl2 = '''
