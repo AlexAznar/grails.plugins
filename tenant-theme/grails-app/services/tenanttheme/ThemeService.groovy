@@ -36,7 +36,7 @@ class ThemeService {
 		return compiledTemplate.apply(model);
 	}
 	
-	public def loadTemplate( Tenant tenant, Theme theme, String template ) {
+	public def loadTemplate( def tenant, Theme theme, String template ) {
 		def config = getPluginConfig()
 		def path   = getPathResolver()
 		def file   = new File( config.themes.directory + path(tenant,theme) + "/templates/${template}.html" )
@@ -50,14 +50,6 @@ class ThemeService {
 	public def getPathResolver() {
 		getPluginConfig().themes.pathResolver ?: { tenant, theme -> "/${tenant.name}/${theme.name}" }
 	}
-/*
-  .getTheme() -> resolve theme by resolver and return
-  .renderLayout('fullpage.html', [] )
-  .renderTemplate('email/registered')
-        .renderTemplate('shop/product', [product:Product.get(1)] )
-  .renderPage( 'about-us' )
-  .render template:'', model:[], 
-*/
 
     /**
      * initializeWithConfig

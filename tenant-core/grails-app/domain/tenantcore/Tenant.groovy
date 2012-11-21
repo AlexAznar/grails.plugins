@@ -33,6 +33,52 @@ class Tenant {
 	}
 
 
+	def retrieveAttributeList( String type ) {
+		return Tenant.GenericGetAttributeList( this, type )
+	}
+	def storeAttributeList( String type, def attrs ) {
+		Tenant.GenericSetAttributeList( this, type, attrs )		
+	}
+
+	def retrieveAttributeMap( String type ) {
+			return Tenant.GenericGetAttributeMap( this, type )		
+	}
+	def storeAttributeMap( String type, def attrs ) {
+		Tenant.GenericSetAttributeMap( this, type, attrs )		
+	}
+
+	// magic set
+	def propertyMissing(String name, value) {
+		String kind = name.endsWith('List') ? 'List' : name.endsWith('Map') ? 'Map' : null
+		if( !kind )
+			throw Exception("Property ${name} not found for class Tenant")
+		
+		String type = name.substring( 0, name.indexOf(kind) )
+
+		if( kind == 'List' ) {
+			Tenant.GenericSetAttributeList( this, type, value )
+		}
+		else if( kind == 'Map' ) {
+			Tenant.GenericSetAttributeMap( this, type, value )
+		}
+	}
+
+	// magic get
+	def propertyMissing(String name) {
+		String kind = name.endsWith('List') ? 'List' : name.endsWith('Map') ? 'Map' : null
+		if( !kind )
+			throw Exception("Property ${name} not found for class Tenant")
+
+		String type = name.substring( 0, name.indexOf(kind) )
+
+		if( kind == 'List' ) {
+			return Tenant.GenericGetAttributeList( this, type )
+		}
+		else if( kind == 'Map' ) {
+			return Tenant.GenericGetAttributeMap( this, type )
+		}	
+	}
+
 	// private helper closures
 	private final static def GenericGetAttributeMap = { Tenant self, String type ->
 		def items = self.attributes?.findAll { it.type == type }
