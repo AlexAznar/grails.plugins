@@ -4,7 +4,7 @@ class TenantThemeGrailsPlugin {
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.1 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    def dependsOn = [tenantCore:"0.2"]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
@@ -52,6 +52,8 @@ Brief summary/description of the plugin.
 
     def doWithApplicationContext = { applicationContext ->
         // TODO Implement post initialization spring config (optional)
+    	def themeService = applicationContext.getBean('themeService')
+    	themeService.initializeWithConfig()
     }
 
     def onChange = { event ->
@@ -63,6 +65,8 @@ Brief summary/description of the plugin.
     def onConfigChange = { event ->
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
+    	def themeService = applicationContext.getBean('themeService')
+    	themeService.initializeWithConfig()
     }
 
     def onShutdown = { event ->
