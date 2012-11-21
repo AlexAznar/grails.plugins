@@ -35,3 +35,7 @@ grails.project.dependency.resolution = {
         }
     }
 }
+
+['tenant-core'].each {
+	grails.plugin.location."${it}" = "../${it}"	
+}
