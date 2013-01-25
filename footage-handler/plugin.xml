@@ -1,4 +1,4 @@
-<plugin name='footage-handler' version='0.2.6' grailsVersion='1.3.7 &gt; *'>
+<plugin name='footage-handler' version='0.2.7' grailsVersion='1.3.7 &gt; *'>
   <author>Your name</author>
   <title>Plugin summary/headline</title>
   <description>\
@@ -9,6 +9,7 @@ Brief description of the plugin.
     <resource>BuildConfig</resource>
     <resource>Config</resource>
     <resource>DataSource</resource>
+    <resource>FootageHandlerResources</resource>
     <resource>UrlMappings</resource>
     <resource>megusta.ImageFileController</resource>
     <resource>megusta.UploadController</resource>

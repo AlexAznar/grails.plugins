@@ -50,21 +50,13 @@ class AjaxUploaderTagLib {
     static namespace = 'uploader'
 
     def head = { attrs, body ->
+        r.require(module: "footage_handler_uploader")
 
-        out << "<link rel='stylesheet' type='text/css' href='${g.resource(dir:'css/imgAreaSelect', file:'imgareaselect-animated.css', plugin:'footage-handler')}'/>"
-        out << "<link rel='stylesheet' type='text/css' href='${g.resource(dir:'css/ui-lightness', file:'jquery-ui-1.8.16.custom.css', plugin:'footage-handler')}'/>"
-        out << "<link rel='stylesheet' type='text/css' href='${g.resource(dir:'css/img-edit', file:'img-edit.css', plugin:'footage-handler')}'/>"
-
-        String uploaderCSSPath = attrs.css ?: resource(dir:"${pluginContextPath}/css", file:'uploader.css')
+        String uploaderCSSPath = attrs.css ?: resource(plugin: "footage-handler", dir:"css", file:'uploader.css')
 
         out << '<style type="text/css" media="screen">'
         out << "   @import url( ${uploaderCSSPath} );"
         out << "</style>"
-
-        out << g.javascript(src:'jquery-ui-1.8.16.custom.min.js', plugin:'footage-handler')
-        out << g.javascript(src:'jquery.fileupload.js', plugin:'footage-handler')
-        out << g.javascript(src:'jquery.iframe-transport.js', plugin:'footage-handler')
-        out << g.javascript(src:'jquery.imgareaselect.pack.js', plugin:'footage-handler')
     }
 
     def uploader = { attrs, body ->

@@ -14,11 +14,11 @@ class Image {
     def getImageByTag(String tag) {
         def value = null
         
-        if (tag == this.settings.label) {
+        if (tag == this.settings?.label) {
             value = this
         } else {
             this.images.each {
-                if (tag == it.settings.label) {
+                if (tag == it.settings?.label) {
                     value = it
                 }
             }
