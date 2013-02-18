@@ -1,6 +1,6 @@
 class FootageHandlerGrailsPlugin {
     // the plugin version
-    def version = "0.2.8"
+    def version = "0.2.9"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.7 > *"
     // the other plugins this plugin depends on
@@ -26,7 +26,7 @@ Brief description of the plugin.
     def documentation = "http://grails.org/plugin/footage-handler"
 
     def doWithWebDescriptor = { xml ->
-        // TODO Implement additions to web.xml (optional), this event occurs before 
+        // TODO Implement additions to web.xml (optional), this event occurs before
     }
 
     def doWithSpring = {
