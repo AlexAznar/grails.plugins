@@ -51,6 +51,12 @@ class ImageService {
 
     Image getEditedImage(def editingProperties) {
         File file = fileUploadService.getTempFile(editingProperties.fileName)
+
+        if (!file.exists()) {
+//            This result should be taken into consideration where this method is used.
+            return null
+        }
+
         adjustAndSave(file, editingProperties)
     }
 }
