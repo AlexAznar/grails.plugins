@@ -37,7 +37,7 @@ class UploadController {
                     render(text:[success: true, fileName:tempFileName, imgOriginalWidth:imgWidth, imgOriginalHeight:imgHeight] as JSON, contentType:'text/plain')
                     return;
                 } else {
-                    String failureMessage = "The uploaded image has an invalid size: please upload a picture with at least ${settings.minWidth} width and ${settings.minHeight} height."
+                    String failureMessage = g.message(code: "error.upload.image.fail.dimensions", args: [settings.minWidth, settings.minHeight])
                     imgFile.deleteOnExit()
                     render(text:[success: false, message: failureMessage] as JSON, contentType:'text/plain')
                     return;
@@ -56,7 +56,7 @@ class UploadController {
             if(isValidHeight && isValidWidth) {
                 render(text:[success: true, fileName:tempFileName, imgOriginalWidth:imgWidth, imgOriginalHeight:imgHeight] as JSON, contentType:'text/plain')
             } else {
-                String failureMessage = "The uploaded image has an invalid size: please upload a picture with at least ${settings.minWidth} width and ${settings.minHeight} height."
+                String failureMessage = g.message(code: "error.upload.image.fail.dimensions", args: [settings.minWidth, settings.minHeight])
                 imgFile.deleteOnExit()
                 render(text:[success: false, message: failureMessage] as JSON, contentType:'text/plain')
             }
